@@ -3,11 +3,10 @@ package com.presentation.stepdefs;
 import com.presentation.pages.BasePage;
 import com.presentation.steps.BaseSteps;
 import com.presentation.steps.ReflectionSteps;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import net.thucydides.core.annotations.Steps;
+import net.serenitybdd.annotations.Steps;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 
@@ -51,7 +50,6 @@ public class MyStepDefinitions {
     public void theUserVerifiesThatTheElementValueOnThePageIsEqualTo(String elementName, String pageName, String expectedValue) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         BasePage page = reflectionSteps.getPageByName(pageName);
         String locator = reflectionSteps.getXpathAnnotated(page, elementName);
-        String actualValue = baseSteps.getElementText(page, locator);
         Assertions.assertThat(baseSteps.getElementText(page, locator))
                         .isEqualTo(expectedValue);
     }

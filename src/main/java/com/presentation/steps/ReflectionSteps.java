@@ -3,8 +3,8 @@ package com.presentation.steps;
 import com.presentation.annotations.PageName;
 import com.presentation.annotations.XpathLabel;
 import com.presentation.pages.BasePage;
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.core.Serenity;
-import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.WebDriver;
 import org.reflections.Reflections;
 
