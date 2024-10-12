@@ -1,18 +1,10 @@
 package com.presentation.steps;
 
 import com.presentation.pages.BasePage;
-import io.cucumber.java.BeforeAll;
 import net.serenitybdd.core.Serenity;
-import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.webdriver.exceptions.ElementShouldBeDisabledException;
-import org.fluentlenium.core.wait.FluentWait;
-import org.junit.Test;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 
 public class BaseSteps {
 
@@ -24,7 +16,7 @@ public class BaseSteps {
 
     public void typeTextIntoField(BasePage page, String locator, String text) {
         page.$$(locator).stream()
-                .filter(e -> e.waitUntilDisabled().isDisplayed())
+                .filter(e -> e.waitUntilEnabled().isDisplayed())
                 .findFirst().orElseThrow(() -> new NoSuchElementException(locator + "is not visible"))
                 .type(text);
     }
@@ -39,5 +31,4 @@ public class BaseSteps {
     public String getElementText(BasePage page, String locator) {
         return page.$(locator).getText();
     }
-
-    }
+}
